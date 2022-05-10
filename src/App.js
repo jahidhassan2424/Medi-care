@@ -1,15 +1,17 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home/Home/Home/Home';
+import Home from './components/Home/Home';
 import About from './components/About/About';
 import Login from './components/Login/Login';
 import Navbar from './components/Shared/Navbar/Navbar';
+import Banner from './components/Home/Banner';
 
 function App() {
   return (
-    <div data-theme='cupcake'>
+    <div >
       <Navbar></Navbar>
+
       <Routes>
         <Route path='/' element={<Home></Home>} ></Route>
         <Route path='/home' element={<Home />} ></Route>
