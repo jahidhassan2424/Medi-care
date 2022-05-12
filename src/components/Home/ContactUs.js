@@ -4,7 +4,7 @@ import PrimaryButton from '../Shared/PrimaryButton';
 
 const ContactUs = () => {
     return (
-        <section style={{ background: `url(${background})` }} className="mt-32">
+        <section style={{ background: `url(${background})` }} className="mt-32 pb-10">
             <h2 className='text-2xl text-center text-primary font-bold pt-5'>Contact Us</h2>
             <h1 className='text-4xl text-center mt-3 text-white'>Stay Connected With Us</h1>
             <div className='text-center mt-10'>

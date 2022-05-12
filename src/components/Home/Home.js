@@ -5,16 +5,21 @@ import Service from './Service/Service';
 import MakeAppoinment from './MakeAppoinment';
 import Testimonial from './Testimonial';
 import ContactUs from './ContactUs';
+import Footer from './../Shared/Footer';
+
 
 const Home = () => {
     return (
-        <div className='container'>
-            <Banner></Banner>
-            <Info></Info>
-            <Service></Service>
-            <MakeAppoinment></MakeAppoinment>
-            <Testimonial></Testimonial>
-            <ContactUs></ContactUs>
+        <div>
+            <div className='container pb-12'>
+                <Banner></Banner>
+                <Info></Info>
+                <Service></Service>
+                <MakeAppoinment></MakeAppoinment>
+                <Testimonial></Testimonial>
+                <ContactUs></ContactUs>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };
