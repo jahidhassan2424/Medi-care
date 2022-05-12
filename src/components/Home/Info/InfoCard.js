@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const InfoCard = ({ img, title, bgClass }) => {
     return (
         <div class={`card lg:card-side p-5 lg:pl-12   shadow-xl  ${bgClass}`} >
