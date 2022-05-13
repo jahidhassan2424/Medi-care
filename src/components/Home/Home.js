@@ -11,7 +11,7 @@ import Footer from './../Shared/Footer';
 const Home = () => {
     return (
         <div>
-            <div className='container pb-12'>
+            <div className='container p-0 lg:pb-12 '>
                 <Banner></Banner>
                 <Info></Info>
                 <Service></Service>

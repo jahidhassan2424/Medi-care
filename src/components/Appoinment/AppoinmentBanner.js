@@ -7,9 +7,9 @@ import 'react-day-picker/dist/style.css';
 const AppoinmentBanner = ({ date, setDate }) => {
     return (
         <div class="hero mt-20 ">
-            <div class="hero-content flex-col lg:flex-row-reverse gap-20">
-                <img src={chair} class="max-w-2xl rounded-lg shadow-2xl" />
-                <div>
+            <div class="hero-content flex-col justify-center lg:flex-row-reverse gap-20">
+                <img src={chair} class="max-w-lg  lg:max-w-2xl w-4/5  rounded-lg shadow-2xl" />
+                <div className='w-full flex justify-center  '>
                     <DayPicker
                         mode='single'
                         selected={date}
