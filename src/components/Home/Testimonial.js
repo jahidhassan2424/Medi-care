@@ -15,7 +15,7 @@ const Testimonial = () => {
           <h1 className="text-3xl mt-2 lg:text-4xl">What Our Patients Says</h1>
         </div>
         <div className="flex justify-end">
-          <img width={"60%"} src={quote} alt="" />
+          <img className="w-3/5 lg:w-2/6" src={quote} alt="" />
         </div>
       </div>
       {/* Bottom Section */}

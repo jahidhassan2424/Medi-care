@@ -11,7 +11,7 @@ const Service = () => {
             <h1 className='text-2xl text-center text-secondary font-bold'>Our Service</h1>
             <h1 className='text-4xl text-center mt-5'>Service We Provide</h1>
 
-            <div className='rid lg:grid-cols-3 grid-cols-1 justify-center mt-20 items-center text-center'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 justify-center mt-20 items-center text-center'>
                 <ServiceCard title="Fluride Treatement" img={fluoride}></ServiceCard>
                 <ServiceCard title="Cavity Filling" img={cavity}></ServiceCard>
                 <ServiceCard title="mm" img={whitening}></ServiceCard>

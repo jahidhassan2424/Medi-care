@@ -2,9 +2,11 @@ import React from 'react';
 import PrimaryButton from './../Shared/PrimaryButton';
 import Footer from './../Shared/Footer';
 import AppoinmentSlots from './AppoinmentSlots';
+import BookingModal from './BookingModal';
 
-const AppoinmentSingle = ({ service }) => {
+const AppoinmentSingle = ({ service, setTreatement }) => {
     const { name, slots } = service;
+    
     return (
         <div class="card w-full shadow-xl">
             <div class="card-body text-center">
@@ -20,7 +22,8 @@ const AppoinmentSingle = ({ service }) => {
                 </div>
                 <span>{slots.length} Space Available</span>
                 <div class="card-actions justify-center">
-                    <button className='btn btn-secondary text-white text-lg' disabled={slots.length === 0}>Book Appoinment</button>
+
+                    <label onClick={() => setTreatement(service)} for="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
                 </div>
 
             </div>
