@@ -8,6 +8,10 @@ import Navbar from './components/Shared/Navbar/Navbar';
 import Banner from './components/Home/Banner';
 import Footer from './components/Shared/Footer';
 import Appoinment from './components/Appoinment/Appoinment';
+import Register from './components/Register/Register';
+import Loading from './components/Shared/Loading';
+import RequiredAuth from './components/Shared/RequiredAuth';
+
 
 function App() {
   return (
@@ -19,9 +23,13 @@ function App() {
         <Route path='/home' element={<Home />} ></Route>
         <Route path='/about' element={<About />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
-        <Route path='/appoinment' element={<Appoinment />} ></Route>
-        {/* <Route path='/about' element={<About />} ></Route>
-        <Route path='/about' element={<About />} ></Route> */}
+        <Route path='/appoinment' element={<RequiredAuth>
+          <Appoinment />
+        </RequiredAuth>} ></Route>
+        <Route path='/login' element={<Login />} ></Route>
+        <Route path='/register' element={<Register />} ></Route>
+        <Route path='/loading' element={<Loading />} ></Route>
+
       </Routes>
       <br />
 

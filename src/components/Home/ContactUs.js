@@ -9,11 +9,11 @@ const ContactUs = () => {
             <h1 className='text-4xl text-center mt-3 text-white'>Stay Connected With Us</h1>
             <div className='text-center mt-10'>
 
-                <input type="text" placeholder="Email Addrerss" class=" input input-bordered input-info w-full max-w-xs mb-5" /><br />
-                <input type="text" placeholder="Email Addrerss" class=" input input-bordered input-info w-full max-w-xs mb-5" />
+                <input type="text" placeholder="Email Addrerss" className=" input input-bordered input-info w-full max-w-xs mb-5" /><br />
+                <input type="text" placeholder="Email Addrerss" className=" input input-bordered input-info w-full max-w-xs mb-5" />
                 <br />
 
-                <textarea class="textarea textarea-secondary input input-bordered input-info w-full max-w-xs  mb-10" placeholder="Bio"></textarea>
+                <textarea className="textarea textarea-secondary input input-bordered input-info w-full max-w-xs  mb-10" placeholder="Bio"></textarea>
 
                 <PrimaryButton>Submit</PrimaryButton>
             </div>

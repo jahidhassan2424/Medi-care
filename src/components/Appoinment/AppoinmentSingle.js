@@ -1,14 +1,13 @@
 import React from 'react';
-import PrimaryButton from './../Shared/PrimaryButton';
-import Footer from './../Shared/Footer';
-import AppoinmentSlots from './AppoinmentSlots';
 
-const AppoinmentSingle = ({ service }) => {
+
+const AppoinmentSingle = ({ service, setTreatement }) => {
     const { name, slots } = service;
+
     return (
-        <div class="card w-full shadow-xl">
-            <div class="card-body text-center">
-                <h2 class="card-title justify-center text-secondary font-bold">{name}</h2>
+        <div className="card w-full shadow-xl">
+            <div className="card-body text-center">
+                <h2 className="card-title justify-center text-secondary font-bold">{name}</h2>
                 <div>
                     {
                         slots.length > 0
@@ -19,8 +18,9 @@ const AppoinmentSingle = ({ service }) => {
                     }
                 </div>
                 <span>{slots.length} Space Available</span>
-                <div class="card-actions justify-center">
-                    <button className='btn btn-secondary text-white text-lg' disabled={slots.length === 0}>Book Appoinment</button>
+                <div className="card-actions justify-center">
+
+                    <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
                 </div>
 
             </div>
