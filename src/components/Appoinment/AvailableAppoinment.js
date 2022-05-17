@@ -6,6 +6,7 @@ import AppoinmentSingle from './AppoinmentSingle';
 import BookingModal from './BookingModal';
 
 const AvailableAppoinment = ({ date }) => {
+
     const [treatement, setTreatement] = useState(null);
 
     const formatedDate = format(date, "PP");
@@ -15,6 +16,7 @@ const AvailableAppoinment = ({ date }) => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
 
 
     return (
@@ -31,6 +33,7 @@ const AvailableAppoinment = ({ date }) => {
                 }
             </div>
             {
+<<<<<<< HEAD
                 treatement && <BookingModal
                     treatement={treatement}
                     setTreatement={setTreatement}
@@ -38,6 +41,9 @@ const AvailableAppoinment = ({ date }) => {
                     refetch={refetch}
 
                 ></BookingModal>
+=======
+                treatement && <BookingModal treatement={treatement} date={date}></BookingModal>
+>>>>>>> 24305a429f798f02435779ea09cf71bebb9a8206
             }
 
         </div>

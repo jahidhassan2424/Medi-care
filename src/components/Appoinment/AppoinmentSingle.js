@@ -1,8 +1,12 @@
 import React from 'react';
-
+import PrimaryButton from './../Shared/PrimaryButton';
+import Footer from './../Shared/Footer';
+import AppoinmentSlots from './AppoinmentSlots';
+import BookingModal from './BookingModal';
 
 const AppoinmentSingle = ({ service, setTreatement }) => {
     const { name, slots } = service;
+
 
     return (
         <div className="card w-full shadow-xl">
@@ -18,12 +22,18 @@ const AppoinmentSingle = ({ service, setTreatement }) => {
                     }
                 </div>
                 <span>{slots.length} Space Available</span>
-                <div className="card-actions justify-center">
+<<<<<<< HEAD
+    <div className="card-actions justify-center">
 
-                    <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
-                </div>
+        <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
+=======
+                <div class="card-actions justify-center">
 
-            </div>
+            <label onClick={() => setTreatement(service)} for="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
+>>>>>>> 24305a429f798f02435779ea09cf71bebb9a8206
+        </div>
+
+    </div>
         </div >
     );
 };
