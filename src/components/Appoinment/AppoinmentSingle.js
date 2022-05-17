@@ -22,20 +22,19 @@ const AppoinmentSingle = ({ service, setTreatement }) => {
                     }
                 </div>
                 <span>{slots.length} Space Available</span>
-<<<<<<< HEAD
-    <div className="card-actions justify-center">
 
-        <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
-=======
-                <div class="card-actions justify-center">
+                <div className="card-actions justify-center">
 
-            <label onClick={() => setTreatement(service)} for="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
->>>>>>> 24305a429f798f02435779ea09cf71bebb9a8206
+                    <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
+                    <div class="card-actions justify-center">
+
+                        <label onClick={() => setTreatement(service)} for="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
+                    </div>
+
+                </div>
+            </div >
+            );
         </div>
-
-    </div>
-        </div >
-    );
-};
-
+    )
+}
 export default AppoinmentSingle;

@@ -33,7 +33,6 @@ const AvailableAppoinment = ({ date }) => {
                 }
             </div>
             {
-<<<<<<< HEAD
                 treatement && <BookingModal
                     treatement={treatement}
                     setTreatement={setTreatement}
@@ -41,9 +40,7 @@ const AvailableAppoinment = ({ date }) => {
                     refetch={refetch}
 
                 ></BookingModal>
-=======
-                treatement && <BookingModal treatement={treatement} date={date}></BookingModal>
->>>>>>> 24305a429f798f02435779ea09cf71bebb9a8206
+
             }
 
         </div>

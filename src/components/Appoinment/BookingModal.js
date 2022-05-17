@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
-<<<<<<< HEAD
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import Loading from '../Shared/Loading';
