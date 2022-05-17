@@ -3,25 +3,48 @@ import { format } from 'date-fns';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
+const axios = require('axios');
 
-const BookingModal = ({ treatement, date }) => {
+const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
     const { name, slots } = treatement;
     const [user, loading, error] = useAuthState(auth);
     if (loading) {
         <Loading></Loading>
     }
     const handleBookAppoinment = async (event) => {
-        const slot = event.target.slot.value;
+        event.preventDefault();
+        const slot = event.target.slot?.value;
+        const phone = event.target.phone?.value;
         const bookingInfo = {
             treatementName: name,
             formatedDate: format(date, "PP"),
-            slot,
+            slot: slot,
             patientName: user?.displayName,
             email: user?.email,
-            phone: event.target.phone.value
-
-
+            phone: phone
         }
+
+        // Axios method
+        const body = bookingInfo;
+        const result = await axios.post(`http://localhost:5000/service`, body)
+        console.log(result);
+        if (result.data.success) {
+            toast.success(`Appoinment set on ${bookingInfo.formatedDate} at ${bookingInfo.slot}`)
+            setTreatement(null);
+            refetch();
+        }
+        else {
+            toast.error(`Already have an appoinment on ${bookingInfo.formatedDate} `)
+        }
+
+    }
+
+    const deleteAll = async (event) => {
+        event.preventDefault();
+        const result = await axios.delete(`http://localhost:5000/service`)
+        console.log(result);
+        toast.success("All Data Deleted")
     }
     return (
         <div>
@@ -35,24 +58,27 @@ const BookingModal = ({ treatement, date }) => {
                         <label htmlFor="booking-modal" className="btn rounded-full text-2xl">X</label>
                     </div>
                     <h3 className="font-bold text-2xl mb-10">{name}</h3>
-                    <div className='flex flex-col justify-center items-center'>
-                        <input type="text" value={format(date, 'PP')} className="input  w-full max-w-xs bg-zinc-400 text-xl mb-5" disabled />
+                    <form onSubmit={handleBookAppoinment}>
+                        <div className='flex flex-col justify-center items-center'>
+                            <input type="text" value={format(date, 'PP')} className="input  w-full max-w-xs bg-zinc-400 text-xl mb-5" disabled />
 
-                        {/* Select an Option */}
-                        <select name="slot" className="select select-bordered w-full max-w-xs text-lg">
-                            {/* <option disabled selected>Who shot first?</option> */}
-                            {
-                                slots.map((slot, index) => <option
-                                    key={index}
-                                >{slot}</option>)
-                            }
-                        </select>
-                        {/* <input type="text"  className="input  w-full max-w-xs bg-zinc-400 text-xl mb-5" disabled /> */}
-                        <input type="text" name="name" placeholder='Full Name' value={user?.displayName || ''} disabled className="input  w-full input-bordered max-w-xs  text-xl mb-5 mt-5" />
-                        <input type="email" name="email" placeholder='Email' value={user?.email || ''} disabled className="input  w-full input-bordered max-w-xs  text-xl mb-5" />
-                        <input type="number" name="phone" placeholder='Phone Number ' className="input  w-full input-bordered max-w-xs  text-xl mb-5" />
-                        <button className='btn btn-secondary text-white text-xl mt-3 font-bold' type="submit">SUBMIT</button>
-                    </div>
+                            {/* Select an Option */}
+                            <select name="slot" className="select select-bordered w-full max-w-xs text-lg">
+                                {/* <option disabled selected>Who shot first?</option> */}
+                                {
+                                    slots.map((slot, index) => <option
+                                        key={index}
+                                    >{slot}</option>)
+                                }
+                            </select>
+                            {/* <input type="text"  className="input  w-full max-w-xs bg-zinc-400 text-xl mb-5" disabled /> */}
+                            <input type="text" name="name" placeholder='Full Name' value={user?.displayName || ''} disabled className="input  w-full input-bordered max-w-xs  text-xl mb-5 mt-5" />
+                            <input type="email" name="email" placeholder='Email' value={user?.email || ''} disabled className="input  w-full input-bordered max-w-xs  text-xl mb-5" />
+                            <input type="number" name="phone" placeholder='Phone Number ' className="input  w-full input-bordered max-w-xs  text-xl mb-5" />
+                            <button className='btn btn-secondary text-white text-xl mt-3 font-bold' type="submit">SUBMIT</button>
+                            <button onClick={deleteAll} className='btn btn-secondary text-white text-xl mt-3 font-bold' type="submit">DELETE ALL</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
