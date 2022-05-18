@@ -1,9 +1,10 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import GooleSignIn from '../Shared/GooleSignIn';
 import auth from './../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from './../hooks/useToken';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -18,24 +19,21 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-
-    if (user) {
+    const [token] = useToken(user);
+    if (token) {
         navigate(from, { replace: true });
     }
     let createError;
     if (error) {
         createError = <p>{error.message}</p>
     }
-
     // On submit
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name });
 
-        console.log('Profile Updated');
-
-
+        console.log('Display Name Updated');
     }
     return (
         <div className='flex justify-center mt-16'>

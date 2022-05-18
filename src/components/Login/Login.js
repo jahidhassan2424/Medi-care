@@ -5,6 +5,7 @@ import { useSignInWithEmailAndPassword, useAuthState } from 'react-firebase-hook
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import GooleSignIn from '../Shared/GooleSignIn';
+import useToken from './../hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -18,14 +19,16 @@ const Login = () => {
         signInLoading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [token] = useToken(user);
     let signInError;
 
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [from, user])
+    }, [token, from, navigate])
 
     if (error) {
         signInError = <p className='text-red-500'>{error?.message.slice(9)}</p>
