@@ -26,10 +26,7 @@ const AppoinmentSingle = ({ service, setTreatement }) => {
                 <div className="card-actions justify-center">
 
                     <label onClick={() => setTreatement(service)} htmlFor="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
-                    <div class="card-actions justify-center">
 
-                        <label onClick={() => setTreatement(service)} for="booking-modal" disabled={slots.length === 0} className='btn btn-secondary text-white text-lg'>Book Appoinment</label>
-                    </div>
 
                 </div>
             </div >
