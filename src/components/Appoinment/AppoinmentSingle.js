@@ -5,7 +5,7 @@ import AppoinmentSlots from './AppoinmentSlots';
 import BookingModal from './BookingModal';
 
 const AppoinmentSingle = ({ service, setTreatement }) => {
-    const { name, slots } = service;
+    const { name, slots, price } = service;
 
 
     return (
@@ -22,6 +22,7 @@ const AppoinmentSingle = ({ service, setTreatement }) => {
                     }
                 </div>
                 <span>{slots.length} Space Available</span>
+                <span>Price: {price} </span>
 
                 <div className="card-actions justify-center">
 
@@ -30,7 +31,7 @@ const AppoinmentSingle = ({ service, setTreatement }) => {
 
                 </div>
             </div >
-            );
+
         </div>
     )
 }

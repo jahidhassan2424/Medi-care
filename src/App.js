@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequiredAdmin from './components/Shared/RequireAdmin';
 import AddDoctor from './components/Dashboard/AddDoctor';
 import ManageDoctor from './components/Dashboard/ManageDoctor';
+import Payment from './components/Dashboard/Payment';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path='/dashboard/users' element={<RequiredAdmin><Users /></RequiredAdmin>}></Route>
           <Route path='/dashboard/add-doctor' element={<RequiredAdmin><AddDoctor /></RequiredAdmin>}></Route>
           <Route path='/dashboard/manageDoctor' element={<RequiredAdmin><ManageDoctor /></RequiredAdmin>}></Route>
+          <Route path='/dashboard/payment/:id' element={<RequiredAdmin><Payment /></RequiredAdmin>}></Route>
         </Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>

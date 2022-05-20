@@ -8,11 +8,11 @@ const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
     return (
-        <div>
+        <div className='mt-10'>
             <div className="drawer drawer-mobile">
                 <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ">
-                    <h2 className='text-3xl font-bold text-purple-400'>Welcome to your Dashboard</h2>
+                    <h2 className='text-4xl mb-10 font-bold text-purple-400'>Welcome to your Dashboard</h2>
                     {/* <!-- Page content here --> */}
                     <Outlet></Outlet>
 
@@ -34,6 +34,7 @@ const Dashboard = () => {
                                 <li><Link to={"/dashboard/manageDoctor"}>Manage Doctor</Link></li>
                             </>
                         }
+                        <li><Link to={"/dashboard/payment/:id"}>Payment</Link></li>
                     </ul>
 
                 </div>

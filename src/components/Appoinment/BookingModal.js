@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const axios = require('axios');
 
 const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
-    const { name, slots } = treatement;
+    const { name, slots, price } = treatement;
     const [user, loading, error] = useAuthState(auth);
     if (loading) {
         <Loading></Loading>
@@ -22,7 +22,8 @@ const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
             slot: slot,
             patientName: user?.displayName,
             email: user?.email,
-            phone: phone
+            phone: phone,
+            price: price
         }
 
         // Axios method
@@ -48,9 +49,6 @@ const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
     }
 
 
-    const BookingModal = ({ treatement, date }) => {
-        const { name, slots } = treatement;
-    }
     return (
         <div>
 
