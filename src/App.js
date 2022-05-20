@@ -16,6 +16,7 @@ import History from './components/Dashboard/History';
 import Users from './components/Dashboard/Users';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import RequiredAdmin from './components/Shared/RequireAdmin';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
           <Route index element={<MyAppoinment />}></Route>
           <Route path='/dashboard/review' element={<MyReview />}></Route>
           <Route path='/dashboard/history' element={<History />}></Route>
-          <Route path='/dashboard/users' element={<Users />}></Route>
+          <Route path='/dashboard/users' element={<RequiredAdmin><Users /></RequiredAdmin>}></Route>
         </Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
