@@ -18,6 +18,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequiredAdmin from './components/Shared/RequireAdmin';
 import AddDoctor from './components/Dashboard/AddDoctor';
+import ManageDoctor from './components/Dashboard/ManageDoctor';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path='/dashboard/history' element={<History />}></Route>
           <Route path='/dashboard/users' element={<RequiredAdmin><Users /></RequiredAdmin>}></Route>
           <Route path='/dashboard/add-doctor' element={<RequiredAdmin><AddDoctor /></RequiredAdmin>}></Route>
+          <Route path='/dashboard/manageDoctor' element={<RequiredAdmin><ManageDoctor /></RequiredAdmin>}></Route>
         </Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>

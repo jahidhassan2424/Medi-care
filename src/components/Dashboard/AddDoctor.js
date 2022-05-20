@@ -80,7 +80,7 @@ const AddDoctor = () => {
                             <input
                                 type="text"
                                 placeholder="Doctor's Name"
-                                className="input input-bordered w-full text-2xl "
+                                className="input input-bordered w-full text-xl "
                                 {...register("name", {
                                     required: true
                                 })}
@@ -96,7 +96,7 @@ const AddDoctor = () => {
                             <input
                                 type="email"
                                 placeholder="Enter Email"
-                                className="input input-bordered  w-full text-2xl "
+                                className="input input-bordered  w-full text-xl "
                                 {...register("email", {
                                     required: true
                                 })}
