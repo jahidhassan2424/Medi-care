@@ -11,6 +11,10 @@ const GooleSignIn = () => {
     let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [token] = useToken(user);
+
+    // if (user) {
+    // }
+
     if (token) {
         navigate(from, { replace: true });
     }

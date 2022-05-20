@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
+import useToken from './../hooks/useToken';
 
 const MyAppoinment = () => {
     const [bookings, setBookings] = useState([]);
     const [user] = useAuthState(auth);
-
+    const [token] = useToken(user);
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?email=${user.email}`)
+            fetch(`http://localhost:5000/booking?email=${user.email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => setBookings(data))
         }
@@ -18,8 +24,8 @@ const MyAppoinment = () => {
 
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

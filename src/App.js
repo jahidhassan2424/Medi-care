@@ -5,18 +5,17 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Login from './components/Login/Login';
 import Navbar from './components/Shared/Navbar/Navbar';
-import Banner from './components/Home/Banner';
-import Footer from './components/Shared/Footer';
 import Appoinment from './components/Appoinment/Appoinment';
 import Register from './components/Register/Register';
 import Loading from './components/Shared/Loading';
 import RequiredAuth from './components/Shared/RequiredAuth';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import MyAppoinment from './components/Dashboard/MyAppoinment';
 import MyReview from './components/Dashboard/MyReview';
 import History from './components/Dashboard/History';
+import Users from './components/Dashboard/Users';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -41,6 +40,7 @@ function App() {
           <Route index element={<MyAppoinment />}></Route>
           <Route path='/dashboard/review' element={<MyReview />}></Route>
           <Route path='/dashboard/history' element={<History />}></Route>
+          <Route path='/dashboard/users' element={<Users />}></Route>
         </Route>
         <Route path='/login' element={<Login />} ></Route>
         <Route path='/register' element={<Register />} ></Route>
