@@ -9,7 +9,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const currentUser = { email: email };
         if (email) {
-            const result = await axios.put(`http://localhost:5000/user/${email}`, currentUser)
+            const result = await axios.put(`https://secret-gorge-44931.herokuapp.com/user/${email}`, currentUser)
             console.log(result.data);
             const accessToken = result.data.token;
             localStorage.setItem('accessToken', accessToken);

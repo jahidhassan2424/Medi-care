@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const ManageDoctor = () => {
     const [doctors, setDoctors] = useState([]);
     const [deletingDoctor, setDeletingDoctor] = useState(null);
-    const { isLoading, refetch } = useQuery('doctors', () => fetch(`http://localhost:5000/doctor`, {
+    const { isLoading, refetch } = useQuery('doctors', () => fetch(`https://secret-gorge-44931.herokuapp.com/doctor`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

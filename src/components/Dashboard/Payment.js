@@ -13,7 +13,7 @@ const Payment = () => {
     const { id } = useParams();
     const [appoinment, setAppoinment] = useState([]);
 
-    const { isLoading, refetch } = useQuery('bookingPayment', () => fetch(`http://localhost:5000/booking/${id}`, {
+    const { isLoading, refetch } = useQuery('bookingPayment', () => fetch(`https://secret-gorge-44931.herokuapp.com/booking/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

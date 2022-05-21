@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user;
     const handleMakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://secret-gorge-44931.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem(`accessToken`)}`
@@ -30,7 +30,7 @@ const UserRow = ({ user, index, refetch }) => {
             })
     };
     const handleRemoveAdmin = () => {
-        fetch(`http://localhost:5000/user/remove-admin/${email}`, {
+        fetch(`https://secret-gorge-44931.herokuapp.com/user/remove-admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem(`accessToken`)}`

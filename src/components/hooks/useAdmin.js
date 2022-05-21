@@ -8,7 +8,7 @@ const useAdmin = user => {
     useEffect(async () => {
         const email = user?.email;
         if (email) {
-            const result = await fetch(`http://localhost:5000/admin/${email}`, {
+            const result = await fetch(`https://secret-gorge-44931.herokuapp.com/admin/${email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(`accessToken`)}`
                 }

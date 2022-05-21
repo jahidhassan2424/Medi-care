@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('service', () => fetch(`http://localhost:5000/service`).then(res => res.json())
+    const { data: services, isLoading } = useQuery('service', () => fetch(`https://secret-gorge-44931.herokuapp.com/service`).then(res => res.json())
     )
 
     const imgageStorageKey = `25e2ae4e569db13b985d30f51ce49721`;
@@ -39,7 +39,7 @@ const AddDoctor = () => {
                         img: img
                     }
                     // Send newly added doctor's info to database
-                    fetch(`http://localhost:5000/doctor`, {
+                    fetch(`https://secret-gorge-44931.herokuapp.com/doctor`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

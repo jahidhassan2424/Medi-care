@@ -11,7 +11,7 @@ const MyAppoinment = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?email=${user.email}`, {
+            fetch(`https://secret-gorge-44931.herokuapp.com/booking?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

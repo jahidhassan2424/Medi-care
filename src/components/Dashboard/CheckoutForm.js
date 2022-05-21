@@ -13,7 +13,7 @@ const CheckoutForm = ({ appoinment }) => {
     const { price, patientName, email, _id } = appoinment;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://secret-gorge-44931.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +76,7 @@ const CheckoutForm = ({ appoinment }) => {
                 transactionId: paymentIntent.id,
             }
             console.log(payment);
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://secret-gorge-44931.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
@@ -96,7 +96,7 @@ const CheckoutForm = ({ appoinment }) => {
         //         appointment: _id,
         //         transactionId: paymentIntent.id
         //     }
-        //     fetch(`http://localhost:5000/booking/${_id}`, {
+        //     fetch(`https://secret-gorge-44931.herokuapp.com/booking/${_id}`, {
         //         method: 'PATCH',
         //         headers: {
         //             'content-type': 'application/json',

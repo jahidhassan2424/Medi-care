@@ -28,7 +28,7 @@ const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
 
         // Axios method
         const body = bookingInfo;
-        const result = await axios.post(`http://localhost:5000/service`, body)
+        const result = await axios.post(`https://secret-gorge-44931.herokuapp.com/service`, body)
         console.log(result);
         if (result.data.success) {
             toast.success(`Appoinment set on ${bookingInfo.formatedDate} at ${bookingInfo.slot}`)
@@ -43,7 +43,7 @@ const BookingModal = ({ treatement, date, setTreatement, refetch }) => {
 
     const deleteAll = async (event) => {
         event.preventDefault();
-        const result = await axios.delete(`http://localhost:5000/service`)
+        const result = await axios.delete(`https://secret-gorge-44931.herokuapp.com/service`)
         console.log(result);
         toast.success("All Data Deleted")
     }
