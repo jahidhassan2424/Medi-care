@@ -9,5 +9,6 @@
  * --------------------------------------------------
  * 8. npm install --save stripe (on backend)
  * 9. get cliet secret from backend via paymentIntent post API
+ * 10. store client secret 
  * 
  * */ 

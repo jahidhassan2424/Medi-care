@@ -16,7 +16,6 @@ const useToken = (user) => {
             setToken(accessToken);
             console.log(accessToken);
         }
-        console.log('User Inside useToken', currentUser);
     }, [user])
     return [token];
 }

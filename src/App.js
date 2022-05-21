@@ -20,6 +20,8 @@ import RequiredAdmin from './components/Shared/RequireAdmin';
 import AddDoctor from './components/Dashboard/AddDoctor';
 import ManageDoctor from './components/Dashboard/ManageDoctor';
 import Payment from './components/Dashboard/Payment';
+import Review from './components/Home/Review';
+import ContactUs from './components/Home/ContactUs';
 
 
 function App() {
@@ -53,6 +55,8 @@ function App() {
         <Route path='/register' element={<Register />} ></Route>
         <Route path='/loading' element={<Loading />} ></Route>
         <Route path='/myappoinment' element={<MyAppoinment />} ></Route>
+        <Route path='/review' element={<Review />} ></Route >
+        <Route path='/contact' element={<ContactUs />} ></Route >
 
       </Routes >
       <br />

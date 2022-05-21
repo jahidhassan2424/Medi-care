@@ -1,10 +1,34 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ appoinment }) => {
+
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [clientSecret, setClientSecret] = useState('');
+    const [transactionId, setTransactionId] = useState('');
+    const { price, patientName, email, _id } = appoinment;
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/create-payment-intent`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ price })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                }
+            })
+    }, [price])
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -20,7 +44,72 @@ const CheckoutForm = () => {
             card
         });
         setCardError(error?.message || '');
+        setProcessing(true);
 
+        // Confirm card payment 
+        setSuccess('');
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: patientName,
+                        email: email,
+                    },
+                },
+            },
+        );
+        if (intentError) {
+            setCardError(intentError.message);
+            setProcessing(false);
+        }
+        else {
+            console.log(paymentIntent);
+            setCardError('');
+            setTransactionId(paymentIntent.id);
+            setSuccess('Congratulations! Your Payment is Succesfull');
+
+            // Set payment info to database
+            const payment = {
+                appoinmentID: _id,
+                transactionId: paymentIntent.id,
+            }
+            console.log(payment);
+            fetch(`http://localhost:5000/booking/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setProcessing(false);
+                })
+
+        }
+
+        //     const payment = {
+        //         appointment: _id,
+        //         transactionId: paymentIntent.id
+        //     }
+        //     fetch(`http://localhost:5000/booking/${_id}`, {
+        //         method: 'PATCH',
+        //         headers: {
+        //             'content-type': 'application/json',
+        //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        //         },
+        //         body: JSON.stringify(payment)
+        //     }).then(res => res.json())
+        //         .then(data => {
+        //             setProcessing(false);
+        //             console.log(data);
+        //         })
+
+        // }
     }
     return (
         <div>
@@ -42,13 +131,19 @@ const CheckoutForm = () => {
                     }}
                 />
                 <div className='text-center mt-10'>
-                    <button className='btn btn-primary text-white font-bold text-lg ' type="submit" disabled={!stripe}>
+                    <button className='btn btn-primary text-white font-bold text-lg ' type="submit" disabled={!stripe || !clientSecret}>
                         Pay
                     </button>
                 </div>
             </form>
             {
                 cardError && <p className='text-red-500 font-bold'>{cardError}</p>
+            }
+            {
+                success && <div className='text-green-500 font-bold text-center mt-5'>
+                    <p>{success}</p>
+                    <p>Your Transaction ID: <b>{transactionId}</b></p>
+                </div>
             }
         </div>
     );
